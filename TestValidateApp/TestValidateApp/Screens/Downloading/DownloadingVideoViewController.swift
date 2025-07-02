@@ -62,15 +62,7 @@ class DownloadingVideoViewController: UIViewController {
 extension DownloadingVideoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let video = DownloadManager.shared.getVideos().filter { !$0.isDownloaded }[indexPath.row]
-        if video.isDownloaded {
-            let player = AVPlayer(url: FileManager.default.getDocumentsDirectory().appendingPathComponent(video.fileName))
-            let playerVC = AVPlayerViewController()
-            playerVC.player = player
-            present(playerVC, animated: true) {
-                player.play()
-            }
-        }
+        showAlert(message: "Chờ tới khi tải xong để xem video.")
     }
 }
 
