@@ -18,8 +18,7 @@
 
 ## 🛠 Công nghệ sử dụng
 
-- Swift 5+
-- UIKit
+- Swift5 & UIKit & MVC Pattern
 - URLSession + URLSessionDownloadTask
 - FileManager
 - AVPlayer (xem video offline)
