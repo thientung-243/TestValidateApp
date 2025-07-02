@@ -64,3 +64,9 @@
 ## 📂 Cấu trúc thư mục lưu video
 
 - Mỗi video được lưu tại thư mục Documents trong FileManager
+
+--- 
+
+## ❗️ Vấn đề gặp phải
+- Vì chưa có nhiều kinh nghiệm trong xử lý lỗi internet khi đang tải dữ liệu nên hiện tại em chưa xử lý được lỗi khi đang tải video mà mất kết nối internet. Em đã tìm kiếm phương án và dùng AI để hỏi nhưng vẫn chưa được thực sự ổn. Rất mong được các anh/chị giúp đỡ và chỉ dạy cho em thêm ạ. Em xin chân thành cảm ơn.
+  
