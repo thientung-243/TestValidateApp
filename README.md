@@ -45,11 +45,11 @@
 4. **Hiển thị danh sách video đã tải**
    - `UITableView` với tên và ngày tải
    - Vuốt để xoá file khỏi app và hệ thống
-![X  á video đã tải](screenshot4.png)
+![X  á video đã tải](screenshot3.png)
 5. **Phát video offline**
    - Nhấn vào video trong danh sách
    - Dùng `AVPlayerViewController` để phát
-![Xem video offline](screenshot1=5.png)
+![Xem video offline](screenshot5.png)
 ---
 
 ## 📂 Cấu trúc thư mục lưu video
