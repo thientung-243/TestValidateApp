@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Network
 
 class DownloadManager: NSObject {
     
@@ -19,6 +20,15 @@ class DownloadManager: NSObject {
     var onDownloadComplete: ((Video) -> Void)?
     var onDownloadError: ((Video, Error) -> Void)?
 
+    // MARK: Network Monitor
+    private let monitor = NWPathMonitor()
+    private var isNetworkAvailable: Bool = true
+    
+    override init() {
+        super.init()
+        setupNetworkMonitoring()
+    }
+    
     //MARK: Functions
     func getVideos() -> [Video] {
         return videos
@@ -28,7 +38,44 @@ class DownloadManager: NSObject {
         return videos.filter({ !$0.isDownloaded })
     }
     
+    private func setupNetworkMonitoring() {
+        monitor.pathUpdateHandler = { [weak self] path in
+            self?.isNetworkAvailable = path.status == .satisfied
+            if !(self?.isNetworkAvailable ?? true) {
+                self?.pauseAllDownloadsDueToNetwork()
+            }
+        }
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+    
+    private func pauseAllDownloadsDueToNetwork() {
+        for (url, task) in downloadTasks {
+            task.suspend()
+            if let video = videos.first(where: { $0.url == url }) {
+                let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: [NSLocalizedDescriptionKey: "Mất kết nối internet"])
+                onDownloadError?(video, error)
+            }
+        }
+    }
+    
+    func resumeDownloads() {
+        guard isNetworkAvailable else { return }
+        for (_, task) in downloadTasks {
+            if task.state == .suspended {
+                task.resume()
+            }
+        }
+    }
+    
     func downloadVideo(from url: URL) {
+        guard isNetworkAvailable else {
+            let video = Video(url: url, fileName: url.lastPathComponent, isDownloaded: false)
+            let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: [NSLocalizedDescriptionKey: "Không có kết nối internet"])
+            onDownloadError?(video, error)
+            return
+        }
+        
         let fileName = url.lastPathComponent
         let destinationURL = FileManager.default.getDocumentsDirectory().appendingPathComponent(fileName)
         
@@ -95,5 +142,15 @@ extension DownloadManager: URLSessionDownloadDelegate {
         guard let url = downloadTask.originalRequest?.url else { return }
         let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
         onProgressUpdate?(url, progress)
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        guard let url = task.originalRequest?.url,
+              let error = error else { return }
+        if let index = videos.firstIndex(where: { $0.url == url }) {
+            videos[index].isDownloaded = true
+            onDownloadError?(videos[index], error)
+            downloadTasks.removeValue(forKey: url)
+        }
     }
 }

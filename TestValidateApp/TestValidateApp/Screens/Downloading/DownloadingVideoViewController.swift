@@ -41,8 +41,18 @@ class DownloadingVideoViewController: UIViewController {
         }
         
         DownloadManager.shared.onDownloadError = { [weak self] video, error in
-            self?.showAlert(message: "Lỗi tải xuống: \(error.localizedDescription)")
-            self?.tableView.reloadData()
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                if error.localizedDescription ==  "Mất kết nối internet" {
+                    self.showAlert(message: error.localizedDescription,
+                                   actionName: "Thử lại") {
+                        DownloadManager.shared.resumeDownloads()
+                    }
+                } else {
+                    self.showAlert(message: "Lỗi tải xuống: \(error.localizedDescription)")
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
 
