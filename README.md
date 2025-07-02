@@ -32,24 +32,34 @@
 1. **Người dùng nhập URL**
    - Kiểm tra URL hợp lệ (`isValidURL`)
    - Kiểm tra đã tồn tại video này chưa (dựa vào tên file)
-![Màn hình tải video](screenshot4.png)
+     
+<img src="screenshot4.png" alt="Video list" width="300"/>
+
 2. **Tiến trình tải video**
    - Sử dụng `URLSessionDownloadTask`
    - Hiển thị `UIProgressView` và phần trăm
    - Có nút "Huỷ" để dừng tải
-![Ấn huỷ để dừng tải](screenshot1.png)
+
+<img src="screenshot1.png" alt="Video list" width="300"/>
+
 3. **Sau khi tải xong**
    - Lưu file vào `Documents/DownloadedVideos`
    - Thêm tên file vào danh sách
-![Màn hình video đã tải](screenshot2.png)
+     
+<img src="screenshot2.png" alt="Video list" width="300"/>
+
 4. **Hiển thị danh sách video đã tải**
    - `UITableView` với tên và ngày tải
    - Vuốt để xoá file khỏi app và hệ thống
-![X  á video đã tải](screenshot3.png)
+     
+<img src="screenshot3.png" alt="Video list" width="300"/>
+
 5. **Phát video offline**
    - Nhấn vào video trong danh sách
    - Dùng `AVPlayerViewController` để phát
-![Xem video offline](screenshot5.png)
+     
+<img src="screenshot5.png" alt="Video list" width="300"/>
+
 ---
 
 ## 📂 Cấu trúc thư mục lưu video
