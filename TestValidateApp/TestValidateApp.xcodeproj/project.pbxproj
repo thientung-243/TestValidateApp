@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0C478E2E1B8BCE00A238EF /* HLSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C478D2E1B8BCE00A238EF /* HLSViewController.swift */; };
 		4CA42CA42E14305000EF81AE /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA42CA32E14305000EF81AE /* DownloadManager.swift */; };
 		4CA42CB32E144BAF00EF81AE /* Extension+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA42CB22E144BAF00EF81AE /* Extension+FileManager.swift */; };
 		4CA42CB52E144E1000EF81AE /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA42CB42E144E1000EF81AE /* Extension+UIViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C0C478D2E1B8BCE00A238EF /* HLSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLSViewController.swift; sourceTree = "<group>"; };
 		4CA42CA32E14305000EF81AE /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		4CA42CB22E144BAF00EF81AE /* Extension+FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+FileManager.swift"; sourceTree = "<group>"; };
 		4CA42CB42E144E1000EF81AE /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		4CCAF5382E1425F500F3E2AF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4C0C478D2E1B8BCE00A238EF /* HLSViewController.swift */,
 				4CEF8F662E14D77A008A9DC9 /* Downloaded */,
 				4CEF8F652E14D5B1008A9DC9 /* Downloading */,
 			);
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA42CB32E144BAF00EF81AE /* Extension+FileManager.swift in Sources */,
+				4C0C478E2E1B8BCE00A238EF /* HLSViewController.swift in Sources */,
 				4CCAF5332E13D3C200F3E2AF /* VideoItem.swift in Sources */,
 				4CEF8F6F2E14D8D2008A9DC9 /* DownloadedTableViewCell.swift in Sources */,
 				4CA42CA42E14305000EF81AE /* DownloadManager.swift in Sources */,

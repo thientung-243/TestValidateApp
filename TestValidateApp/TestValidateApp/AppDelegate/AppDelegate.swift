@@ -25,11 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let downloadVC = UINavigationController(rootViewController: DownloadingVideoViewController())
         let downloadedVC = UINavigationController(rootViewController: DownloadedViewController())
+        let hlsVC = UINavigationController(rootViewController: HLSViewController())
         
         downloadVC.tabBarItem = UITabBarItem(title: "Tải xuống", image: UIImage(systemName: "square.and.arrow.down"), tag: 0)
         downloadedVC.tabBarItem = UITabBarItem(title: "Đã tải", image: UIImage(systemName: "video"), tag: 1)
+        hlsVC.tabBarItem = UITabBarItem(title: "HLS", image: UIImage(systemName: "square.and.arrow.up"), tag: 2)
         
-        tabBarController.viewControllers = [downloadVC, downloadedVC]
+        tabBarController.viewControllers = [downloadVC, downloadedVC, hlsVC]
         return tabBarController
     }
 }
